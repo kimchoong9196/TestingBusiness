@@ -18,10 +18,10 @@ public class Main_Member extends javax.swing.JFrame {
      */
     public Main_Member() {
         initComponents();
-        setTitle("Manager Main Page");
-        setSize(400,300);
+        setTitle("Happiness Restaurant Main Page");
+        setSize(450,450);
         setLocationRelativeTo(null);
-        getContentPane().setBackground(new Color(255,255,255));
+        getContentPane().setBackground(new Color(245,245,245));
     }
 
     /**
@@ -45,7 +45,7 @@ public class Main_Member extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel1.setText("Member Main Page");
 
-        jButton1.setText("Check All Schedule");
+        jButton1.setText("Make reservation");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -66,7 +66,7 @@ public class Main_Member extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("View Schedule By Place");
+        jButton4.setText("View menu by sorting");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
