@@ -26,10 +26,10 @@ public class Login_Member extends javax.swing.JFrame {
      */
     public Login_Member() {
         initComponents();
-        setTitle("Member Login");
-        setSize(500,350);
+        setTitle("Happiness Restaurant Member Login");
+        setSize(400,400);
         setLocationRelativeTo(null);
-        getContentPane().setBackground(new Color(255,255,255));
+        getContentPane().setBackground(new Color(245,245,245));
     }
 
     /**
@@ -177,34 +177,7 @@ public class Login_Member extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        Connection con;
-        PreparedStatement ps;
-        try {
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/mini","root","");
-            ps=con.prepareStatement("select memberid,password from member where memberid=? AND password=?");
-            ps.setString(1, tf_id.getText());
-            ps.setString(2, String.valueOf(pf_pass.getPassword()));
-            ResultSet rs=ps.executeQuery();
-            if(rs.next()){
-                String id=rs.getString("memberid");
-                  JOptionPane.showMessageDialog(null,"Login Sucessfully as Member "+id);
-               new Main_Member().setVisible(true);
-                dispose();
-                }
-                    
-            
-            else
-                {
-                JOptionPane.showMessageDialog(null, "Error In Login,Please Enter ID and Password again!");
-                tf_id.setText("");
-                pf_pass.setText("");
-                }
-        } catch (SQLException ex) {
-            Logger.getLogger(Login_Member.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    
 
     private void cb_checkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_checkActionPerformed
         // TODO add your handling code here:
