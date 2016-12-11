@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logic;
+package happinessrestaurant;
 
+import businesstier.MenuBusinessTier;
+import domain.Menu;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -87,7 +89,7 @@ public class UpdateMenu extends javax.swing.JFrame {
         bt_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_searchActionPerformed(evt);
-            }
+               }
         });
 
         lb_title.setBackground(new java.awt.Color(200, 100, 200));
@@ -159,13 +161,14 @@ public class UpdateMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_updateActionPerformed
-            String id = (String)cb_id.getSelectedItem();
-            String fname = tf_fname.getText();
-            String fprice= tf_fprice.getText();
+            Menu m = new Menu();
+            m.setId((String)cb_id.getSelectedItem());
+            m.setFname(tf_fname.getText());
+            m.setFprice(Double.parseDouble(tf_fprice.getText()));
             
             try {
                 MenuBusinessTier bt = new MenuBusinessTier();
-                boolean iid = bt.updateMenu(id, fname, fprice);
+                boolean iid = bt.updateMenu(m);
                 if (iid == false){
                     JOptionPane.showMessageDialog(this, "Error updating the record");
                 } else {
@@ -185,7 +188,8 @@ public class UpdateMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_resetActionPerformed
 
     private void bt_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelActionPerformed
-     dispose();
+        new HappinessRestaurant().setVisible(true);
+        dispose();
     }//GEN-LAST:event_bt_cancelActionPerformed
 
     private void bt_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_searchActionPerformed
