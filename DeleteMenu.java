@@ -1,5 +1,6 @@
-package logic;
+package happinessrestaurant;
 
+import businesstier.MenuBusinessTier;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -136,7 +137,8 @@ public class DeleteMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_deleteActionPerformed
 
     private void bt_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelActionPerformed
-       dispose();
+       new MenuMain().setVisible(true);
+        dispose();
     }//GEN-LAST:event_bt_cancelActionPerformed
 
     /**
