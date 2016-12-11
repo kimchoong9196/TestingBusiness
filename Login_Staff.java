@@ -29,7 +29,7 @@ public class Login_StaffManager extends javax.swing.JFrame {
         setTitle("Staff/Manager Login");
         setSize(500,400);
         setLocationRelativeTo(null);
-        getContentPane().setBackground(new Color(255,255,255));
+        getContentPane().setBackground(new Color(245,245,245));
     }
 
     /**
@@ -180,37 +180,7 @@ public class Login_StaffManager extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Connection con;
-        PreparedStatement ps;
-        try {
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/mini","root","");
-            ps=con.prepareStatement("select staffid,password,position from staff where staffid=? AND password=?");
-            ps.setString(1, tf_id.getText());
-            ps.setString(2, String.valueOf(pf_pass.getPassword()));
-            ResultSet rs=ps.executeQuery();
-            if(rs.next()){
-                String pst=rs.getString("position");
-                if(pst.equals("Manager"))
-                {  JOptionPane.showMessageDialog(null,"Login Sucessfully as a Manager!");
-               new Main_Manager().setVisible(true);
-                dispose();
-                }
-                else if (pst.equals("Staff"))
-                {   
-                    JOptionPane.showMessageDialog(null, "Login Sucessfully as a Staff!");
-                new Main_Staff().setVisible(true);
-                dispose();
-                }       
-            }
-            else
-                {
-                JOptionPane.showMessageDialog(null, "Error In Login,Please Enter ID and Password again!");
-                tf_id.setText("");
-                pf_pass.setText("");
-                }
-        } catch (SQLException ex) {
-            Logger.getLogger(Login_StaffManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cb_checkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_checkActionPerformed
