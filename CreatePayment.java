@@ -11,12 +11,12 @@ import java.awt.Color;
  *
  * @author User
  */
-public class Payment extends javax.swing.JFrame {
+public class CreatePayment extends javax.swing.JFrame {
 
     /**
-     * Creates new form Payment
+     * Creates new form CreatePayment
      */
-    public Payment() {
+    public CreatePayment() {
         initComponents();
         this.setLocationRelativeTo(null);
          getContentPane().setBackground(new Color(255, 255, 190));
@@ -31,26 +31,28 @@ public class Payment extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bt_create = new javax.swing.JButton();
-        bt_retrieve = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        bt_cash = new javax.swing.JButton();
+        bt_cc = new javax.swing.JButton();
         bt_cancel = new javax.swing.JButton();
         lb_title = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Payment");
+        setTitle("Create Payment");
 
-        bt_create.setText("Create Payment");
-        bt_create.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setText("Choose Your Payment Type:");
+
+        bt_cash.setText("Cash");
+        bt_cash.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_createActionPerformed(evt);
+                bt_cashActionPerformed(evt);
             }
         });
 
-        bt_retrieve.setText("Retrieve Payment");
-        bt_retrieve.addActionListener(new java.awt.event.ActionListener() {
+        bt_cc.setText("Credit Card");
+        bt_cc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_retrieveActionPerformed(evt);
+                bt_ccActionPerformed(evt);
             }
         });
 
@@ -63,62 +65,59 @@ public class Payment extends javax.swing.JFrame {
 
         lb_title.setBackground(new java.awt.Color(200, 100, 200));
         lb_title.setFont(new java.awt.Font("Vrinda", 3, 24)); // NOI18N
-        lb_title.setForeground(new java.awt.Color(255, 215, 0));
+        lb_title.setForeground(new java.awt.Color(255, 125, 125));
         lb_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lb_title.setText("Payment");
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cash.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
+        lb_title.setText("Create Payment");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bt_cancel)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(35, 35, 35)
-                            .addComponent(bt_create, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(65, 65, 65)
-                            .addComponent(bt_retrieve))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(94, 94, 94)
-                            .addComponent(lb_title, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(97, 97, 97)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bt_cash)
+                        .addGap(18, 18, 18)
+                        .addComponent(bt_cc))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(lb_title, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(64, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(bt_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(98, 98, 98))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(lb_title)
-                .addGap(33, 33, 33)
+                .addContainerGap(45, Short.MAX_VALUE)
+                .addComponent(lb_title, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_create)
-                    .addComponent(bt_retrieve))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_cash)
+                    .addComponent(bt_cc))
+                .addGap(65, 65, 65)
                 .addComponent(bt_cancel)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(62, 62, 62))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bt_createActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_createActionPerformed
-        new CreatePayment().setVisible(true);
+    private void bt_cashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cashActionPerformed
+        new CreatePaymentCash().setVisible(true);
         dispose();
-    }//GEN-LAST:event_bt_createActionPerformed
+    }//GEN-LAST:event_bt_cashActionPerformed
 
-    private void bt_retrieveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_retrieveActionPerformed
-        new RetrievePayment().setVisible(true);
+    private void bt_ccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ccActionPerformed
+        new CreatePaymentCC().setVisible(true);
         dispose();
-    }//GEN-LAST:event_bt_retrieveActionPerformed
+    }//GEN-LAST:event_bt_ccActionPerformed
 
     private void bt_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelActionPerformed
         dispose();
@@ -141,28 +140,28 @@ public class Payment extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Payment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreatePayment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Payment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreatePayment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Payment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreatePayment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Payment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreatePayment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Payment().setVisible(true);
+                new CreatePayment().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_cancel;
-    private javax.swing.JButton bt_create;
-    private javax.swing.JButton bt_retrieve;
+    private javax.swing.JButton bt_cash;
+    private javax.swing.JButton bt_cc;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lb_title;
     // End of variables declaration//GEN-END:variables
