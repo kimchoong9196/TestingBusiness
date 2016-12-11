@@ -1,4 +1,4 @@
-package logic;
+package businesstier;
 
 import domain.Menu;
 import java.sql.SQLException;
@@ -10,7 +10,7 @@ import jdbc.MenuJDBC;
 public class MenuBusinessTier {
    MenuJDBC jdbc;
     
-    MenuBusinessTier () throws Exception {
+    public MenuBusinessTier () throws Exception {
         try {
             jdbc = new MenuJDBC();
         }    catch (SQLException ex) {
@@ -18,23 +18,13 @@ public class MenuBusinessTier {
         }
     }
     
-    public boolean createMenu (String id, String fname, String fprice) throws Exception {
+    public boolean createMenu (Menu m) throws Exception {
       Double ffprice;
       
-      if(fname.equals("")){
+      if(m.getFname().equals("")){
           JOptionPane.showMessageDialog(null, "Please enter the food id!");
           return false;
-      }
-
-        try{
-            ffprice = Double.parseDouble(fprice);
-        } catch (NumberFormatException ex){
-            throw new Exception("Invalid price input!!");
-        }
-        Menu m = new Menu();
-        m.setId(id);
-        m.setFname(fname);
-        m.setFprice(ffprice);      
+      } 
        
        boolean success = jdbc.createMenu(m);
        if (success)
@@ -75,25 +65,15 @@ public class MenuBusinessTier {
         return jdbc.retrieveId(id);
     }
     
-    public boolean updateMenu (String id, String fname, String fprice) throws Exception {
+    public boolean updateMenu (Menu m) throws Exception {
         double ffprice;
   
-        if(fname.equals("")){
+        if(m.getFname().equals("")){
           JOptionPane.showMessageDialog(null, "Please enter the food id!");
           return false;
       }
         
-        try{
-         ffprice =Double.parseDouble(fprice);
-        } catch (NumberFormatException ex){
-            throw new Exception("Invalid price input!!");
-        }
-
-        Menu p = new Menu();
-        p.setId(id);
-        p.setFname(fname);
-        p.setFprice(ffprice);
-       boolean success = jdbc.updateMenu(p);
+       boolean success = jdbc.updateMenu(m);
        if (success)
         return true;
        else
