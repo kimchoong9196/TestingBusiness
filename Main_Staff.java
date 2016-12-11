@@ -18,7 +18,7 @@ public class Main_Staff extends javax.swing.JFrame {
      */
     public Main_Staff() {
         initComponents();
-        setTitle("Manager Main Page");
+        setTitle("Staff Main Page");
         setSize(400,300);
         setLocationRelativeTo(null);
         getContentPane().setBackground(new Color(255,255,255));
@@ -47,21 +47,21 @@ public class Main_Staff extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 255));
         jLabel2.setText("Staff Main Page");
 
-        jButton1.setText("Member Maintenance");
+        jButton1.setText("Manage member function");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Create Payment");
+        jButton2.setText("Create Order Payment");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton3.setText("View All Schedule");
+        jButton3.setText("View All Menu");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -75,7 +75,7 @@ public class Main_Staff extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("View Schedule By Place");
+        jButton5.setText("Manage Menu");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
