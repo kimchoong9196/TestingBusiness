@@ -1,4 +1,4 @@
-package logic;
+package businesstier;
 
 import domain.Personnel;
 import java.sql.SQLException;
@@ -10,7 +10,7 @@ import jdbc.PersonnelJDBC;
 public class PersonnelBusinessTier {
     PersonnelJDBC jdbc;
     
-    PersonnelBusinessTier () throws Exception {
+    public PersonnelBusinessTier () throws Exception {
         try {
             jdbc = new PersonnelJDBC();
         }    catch (SQLException ex) {
@@ -18,59 +18,39 @@ public class PersonnelBusinessTier {
         }
     }
     
-    public String createPersonnel (String name, String ic,
-            String bdate, String address,
-            String gender, String hp, String stype,
-            String age) throws Exception {
+    public String createPersonnel (Personnel p) throws Exception {
         int iage;
         int iic;
 
-        if(name.equals("")){
+        if(p.getName().equals("")){
             JOptionPane.showMessageDialog(null, "Invalid name input");
             return "";
         } 
         
-         if(ic.equals("")){
+         if(p.getIc().equals("")){
             JOptionPane.showMessageDialog(null, "Invalid IC No input");
             return "";
         } 
  
-        if(bdate.equals("")){
-            JOptionPane.showMessageDialog(null, "Invalid birthdate input");
-            return "";
-        } 
-        if(address.equals("")){
+        if(p.getAddress().equals("")){
             JOptionPane.showMessageDialog(null, "Invalid address input");
             return "";
         } 
-        if(hp.equals("")){
+        if(p.getHp().equals("")){
             JOptionPane.showMessageDialog(null, "Invalid hp input");
             return "";
         } 
         
-        try{
-            iage = Integer.parseInt(age);
-        } catch (NumberFormatException ex){
-            throw new Exception("Invalid age format");
-        }
+        if (p.getStype().equals("Staff"))
+            p.setId(jdbc.setStaffId(p.getStype()));
+        else
+            p.setId(jdbc.setMemberId(p.getStype()));
         
-        Personnel p = new Personnel();
-        if (stype.equals("staff"))
-            p.setId(jdbc.setStaffId(stype));
+        if (p.getStype().equals("Staff"))
+            p.setStype("S");
         else
-            p.setId(jdbc.setMemberId(stype));
-        p.setName(name);
-        p.setIc(ic);
-        p.setBdate(bdate);
-        p.setAddress(address);
-        p.setGender(gender);
-        p.setHp(hp);
-        if (stype.equals("staff"))
-            p.setStype("s");
-        else
-            p.setStype("m");
-        p.setAge(iage);
-        p.setLoyalthy(0);
+            p.setStype("M");
+        
        boolean success = jdbc.createPersonnnel(p);
        if (success)
         return p.getId();
@@ -106,51 +86,28 @@ public class PersonnelBusinessTier {
         return jdbc.retrieveId(id);
     }
     
-    public boolean updatePersonnel (String id, String name, String ic, String bdate, String address,
-            String gender, String hp, 
-            String age
-            ) throws Exception {
+    public boolean updatePersonnel (Personnel p) throws Exception {
         int iage;
       
-       if(name.equals("")){
+       if(p.getName().equals("")){
             JOptionPane.showMessageDialog(null, "Invalid name input");
             return false;
         } 
         
-         if(ic.equals("")){
+         if(p.getIc().equals("")){
             JOptionPane.showMessageDialog(null, "Invalid IC No input");
             return false;
         } 
 
-        if(bdate.equals("")){
-            JOptionPane.showMessageDialog(null, "Invalid birthdate input");
-            return false;
-        } 
-
-        if(address.equals("")){
+        if(p.getAddress().equals("")){
             JOptionPane.showMessageDialog(null, "Invalid address input");
             return false;
         } 
-        if(hp.equals("")){
+        if(p.getHp().equals("")){
             JOptionPane.showMessageDialog(null, "Invalid hp input");
             return false;
         } 
-        
-        try{
-            iage = Integer.parseInt(age);
-        } catch (NumberFormatException ex){
-            throw new Exception("invalid age format");
-        }
-    
-        Personnel p = new Personnel();
-        p.setId(id);
-        p.setName(name);
-        p.setIc(ic);
-        p.setBdate(bdate);
-        p.setAddress(address);
-        p.setGender(gender);
-        p.setHp(hp);
-        p.setAge(iage);
+         
        boolean success = jdbc.updatePersonnel(p);
        if (success)
         return true;
@@ -159,15 +116,15 @@ public class PersonnelBusinessTier {
         
     }
     
-    public boolean deletePersonnel (String name) throws Exception {
-                    return jdbc.deletePersonnel(name);
-    }
-    
     public ArrayList getStaffId(String type) throws SQLException{
         return jdbc.getStaffId(type);
     }
     public void viewPersonnel(DefaultTableModel model) throws SQLException{
            jdbc.viewPersonnel(model);
         }
+    
+    public boolean deletePersonnel (String name) throws Exception {
+                    return jdbc.deletePersonnel(name);
+    }
  
 }

@@ -25,7 +25,7 @@ public class PersonnelJDBC {
     }
     
     public String setStaffId(String stype )throws SQLException{
-        String type = "s";
+        String type = "S";
         String sql = "select MAX(id) as highestId from personnel where stype=?";
         stmt2 = con.prepareStatement(sql);
         stmt2.setString(1, type);
@@ -45,13 +45,13 @@ public class PersonnelJDBC {
       
         } }
         if (!found)
-            newId = "s100";
+            newId = "S100";
 
             return newId;    
     }
     
     public String setMemberId(String stype )throws SQLException{
-        String type = "m";
+        String type = "M";
         String sql = "select MAX(id) as highestId from personnel where stype=?";
         stmt2 = con.prepareStatement(sql);
         stmt2.setString(1, type);
@@ -71,7 +71,7 @@ public class PersonnelJDBC {
       
         } }
         if (!found)
-            newId = "m100";
+            newId = "M100";
 
             return newId;    
     }
@@ -83,13 +83,10 @@ public class PersonnelJDBC {
                p.getId() +"','" +
                p.getName() +"','" +
                p.getIc() +"','" +
-               p.getBdate() + "','" +
                p.getAddress()+ "','" +
                p.getGender() + "','" +
                p.getHp() + "','" +
-               p.getStype() + "',"+
-               p.getAge()+","+
-              p.getLoyalthy()+")";
+               p.getStype() +"')";
               int result = stmt.executeUpdate(sql);
         
               if (result > 0)
@@ -130,14 +127,10 @@ public class PersonnelJDBC {
            p.setGender(rs.getString("gender"));
            p.setHp(rs.getString("hp"));
            p.setStype(rs.getString("stype"));
-           p.setBdate(rs.getString("bdate"));
            p.setAddress(rs.getString("address"));
-           p.setAge(rs.getInt("age"));
-           p.setLoyalthy(rs.getInt("loyalthy"));
         }
         
         return p.toString();  
-      
     }
     
     public ArrayList retrieveId(String id) throws SQLException{
@@ -147,11 +140,9 @@ public class PersonnelJDBC {
         while(rs.next()){
            value.add(rs.getString("name"));
            value.add(rs.getString("ic"));
-           value.add(rs.getString("bdate"));
            value.add(rs.getString("address"));
            value.add(rs.getString("gender"));
            value.add(rs.getString("hp"));
-           value.add(rs.getInt("age"));
            
         }
         return value;
@@ -162,15 +153,12 @@ public class PersonnelJDBC {
     public boolean updatePersonnel (Personnel p)
             throws SQLException {
         
-        
         String sql = "Update personnel set name='"+
-               p.getName() +"', ic='" +
-               p.getIc() +"', bdate='" +
-               p.getBdate() + "', address='" +
+               p.getName() + "', ic='" +
+               p.getIc() + "', address='" +
                p.getAddress()+ "', gender='" +
                p.getGender() + "', hp='" +
-               p.getHp()  + "', age="+
-               p.getAge()+" where id='"+ p.getId()+"'";
+               p.getHp()  +"' where id='"+ p.getId()+"'";
               int result = stmt.executeUpdate(sql);
         
               if (result > 0)
@@ -210,14 +198,11 @@ public class PersonnelJDBC {
             String id = rs.getString("id");
             String name = rs.getString("name");
             String ic = rs.getString("ic");
-            String bdate = rs.getString("bdate");
             String address = rs.getString("address");
             String gender = rs.getString("gender");
             String hp = rs.getString("hp");
             String stype = rs.getString("stype");
-            String age = rs.getInt("age") + "";
-            String loyalthy = rs.getInt("loyalthy") + "";
-            String value [] = {id, name, ic, bdate, address, gender, hp, stype, age, loyalthy};
+            String value [] = {id, name, ic, address, gender, hp, stype};
             model.addRow(value);
         }
     }
