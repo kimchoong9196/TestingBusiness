@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logic;
+package happinessrestaurant;
 
+import businesstier.PaymentBusinessTier;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -115,6 +116,7 @@ public class RetrievePayment extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelActionPerformed
+        new PaymentMain().setVisible(true);
         dispose();
     }//GEN-LAST:event_bt_cancelActionPerformed
 
@@ -125,7 +127,6 @@ public class RetrievePayment extends javax.swing.JFrame {
             PaymentBusinessTier pbt = new PaymentBusinessTier();
             String search = pbt.retrievePayment(payment_id);
             JOptionPane.showMessageDialog(this, search);
-            dispose();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
