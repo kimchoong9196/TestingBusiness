@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logic;
+package happinessrestaurant;
 
+import businesstier.OrderBusinessTier;
+import businesstier.PaymentBusinessTier;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -59,8 +61,6 @@ public class CreatePaymentCC extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         tf_account_no = new javax.swing.JTextField();
         lb_title = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        tf_member = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Credit Card Payment");
@@ -121,8 +121,6 @@ public class CreatePaymentCC extends javax.swing.JFrame {
         lb_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lb_title.setText("Credit Card Payment");
 
-        jLabel8.setText("Member ID:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -148,7 +146,6 @@ public class CreatePaymentCC extends javax.swing.JFrame {
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5))
                                 .addGap(7, 7, 7)))
@@ -156,7 +153,6 @@ public class CreatePaymentCC extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tf_account_no, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cb_member, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tf_member, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(bt_cancel)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -191,11 +187,7 @@ public class CreatePaymentCC extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(cb_member, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(tf_member, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_subtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
@@ -230,22 +222,14 @@ public class CreatePaymentCC extends javax.swing.JFrame {
        String s_subtotal = tf_subtotal.getText();
        String s_gst = tf_gst.getText();
        String s_total = tf_total.getText();
-       String member = (String) cb_member.getSelectedItem();
-       String member_id = tf_member.getText();
+       
        double subtotal = Double.parseDouble(s_subtotal);
        double gst = Double.parseDouble(s_gst);
        double total = Double.parseDouble(s_total);
       
            boolean p_id = pbt.createPayment(payment_id, order_no, "Credit Card",account_no, subtotal, gst, total);
-           boolean loyal = true;
-           if(member.equals("Yes")){
-              loyal =  pbt.updateMemberLoyalthy(member_id);
-               if(loyal==false)
-                   JOptionPane.showMessageDialog(this,"Invalid member id!!!");
-
-           }
-
-           if(p_id && loyal){
+           
+           if(p_id){
                JOptionPane.showMessageDialog(this,"New payment Created!!!");
                new GenerateReceipt(payment_id).setVisible(true);
                OrderBusinessTier obt = new OrderBusinessTier();
@@ -261,17 +245,13 @@ public class CreatePaymentCC extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_createActionPerformed
 
     private void bt_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelActionPerformed
+        new CreatePayment().setVisible(true);
         dispose();
     }//GEN-LAST:event_bt_cancelActionPerformed
-
-    private void cb_memberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_memberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cb_memberActionPerformed
 
     private void bt_calcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_calcActionPerformed
         String order_no = (String) cb_order_no.getSelectedItem();
         String member = (String) cb_member.getSelectedItem();
-        
          NumberFormat nf = NumberFormat.getInstance();
                     nf.setMaximumFractionDigits(2);
         try {
@@ -296,6 +276,10 @@ public class CreatePaymentCC extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }//GEN-LAST:event_bt_calcActionPerformed
+
+    private void cb_memberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_memberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_memberActionPerformed
 
     /**
      * @param args the command line arguments
@@ -345,11 +329,9 @@ public class CreatePaymentCC extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lb_title;
     private javax.swing.JTextField tf_account_no;
     private javax.swing.JTextField tf_gst;
-    private javax.swing.JTextField tf_member;
     private javax.swing.JTextField tf_payment_id;
     private javax.swing.JTextField tf_subtotal;
     private javax.swing.JTextField tf_total;
