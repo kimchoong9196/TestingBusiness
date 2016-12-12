@@ -48,6 +48,7 @@ public class RetrieveOrder extends javax.swing.JFrame {
         bt_cancel = new javax.swing.JButton();
         cb_order_no = new javax.swing.JComboBox();
         lb_title = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Retrieve Order");
@@ -74,42 +75,50 @@ public class RetrieveOrder extends javax.swing.JFrame {
         lb_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lb_title.setText("Retrieve Order");
 
+        jLabel2.setText("Please select the order no you want to view");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cb_order_no, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98))
             .addGroup(layout.createSequentialGroup()
+                .addGap(64, 64, 64)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(lb_title, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cb_order_no, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
                         .addComponent(bt_search)
-                        .addGap(59, 59, 59)
-                        .addComponent(bt_cancel))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(64, 64, 64)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(lb_title, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(132, Short.MAX_VALUE))
+                        .addComponent(bt_cancel)
+                        .addGap(0, 25, Short.MAX_VALUE)))
+                .addGap(98, 98, 98))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(lb_title, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cb_order_no, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(61, 61, 61)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_search)
-                    .addComponent(bt_cancel))
-                .addContainerGap(60, Short.MAX_VALUE))
+                    .addComponent(bt_cancel)
+                    .addComponent(bt_search))
+                .addGap(34, 34, 34))
         );
 
         pack();
@@ -178,6 +187,7 @@ public class RetrieveOrder extends javax.swing.JFrame {
     private javax.swing.JButton bt_search;
     private javax.swing.JComboBox cb_order_no;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lb_title;
     // End of variables declaration//GEN-END:variables
 }
