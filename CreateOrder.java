@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logic;
+package happinessrestaurant;
 
+import businesstier.OrderBusinessTier;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -52,7 +53,6 @@ public class CreateOrder extends javax.swing.JFrame {
         bt_add = new javax.swing.JButton();
         bt_create = new javax.swing.JButton();
         bt_cancel = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         lb_title = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_item = new javax.swing.JTable();
@@ -149,9 +149,6 @@ public class CreateOrder extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(381, 381, 381)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(49, 49, 49)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
@@ -201,17 +198,15 @@ public class CreateOrder extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cb_item, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(bt_add)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                         .addComponent(bt_item)
                         .addGap(46, 46, 46)
                         .addComponent(bt_set)
                         .addGap(106, 106, 106))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(24, 24, 24)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -266,13 +261,16 @@ public class CreateOrder extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_createActionPerformed
 
     private void bt_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelActionPerformed
+        new OrderMain().setVisible(true);
         dispose();
     }//GEN-LAST:event_bt_cancelActionPerformed
 
     private void bt_itemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_itemActionPerformed
+
         String order_no = tf_order_no.getText();
         
         try{
+            
             OrderBusinessTier obt = new OrderBusinessTier();
             DefaultTableModel model = (DefaultTableModel)tb_item.getModel();
             obt.viewOrder(model, order_no);
@@ -336,7 +334,6 @@ public class CreateOrder extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lb_title;
     private javax.swing.JTable tb_item;
