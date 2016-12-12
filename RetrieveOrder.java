@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logic;
+package happinessrestaurant;
 
+import businesstier.OrderBusinessTier;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -133,7 +134,8 @@ public class RetrieveOrder extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_searchActionPerformed
 
     private void bt_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelActionPerformed
-       dispose();
+       new OrderMain().setVisible(true);
+        dispose();
     }//GEN-LAST:event_bt_cancelActionPerformed
 
     /**
