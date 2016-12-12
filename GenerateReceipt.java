@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logic;
+package happinessrestaurant;
 
+import businesstier.PaymentBusinessTier;
 import java.awt.Color;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
